@@ -27,7 +27,8 @@ watch(
   async (meta) => {
     try {
       if (meta.layout) {
-        const component = await import(`./${meta.layout}.vue`);
+        const componentUrl = new URL(`./${meta.layout}.vue`, import.meta.url).href;
+        const component = await import(componentUrl);
         layout.value = component?.default || BaseLayout;
       } else {
         layout.value = BaseLayout;
