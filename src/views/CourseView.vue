@@ -18,8 +18,6 @@ const { isStudent, course, node, setNode, setModule } = useIsStudent();
 
 const eventHandlers: vNG.EventHandlers = {
   'node:click': ({ node: nodeID }) => {
-    console.log();
-
     setNode(nodeID);
     setModule(node.value.modules[0].id);
 
@@ -27,11 +25,8 @@ const eventHandlers: vNG.EventHandlers = {
       name: isStudent ? 'StudentCourseModule' : 'CourseModule',
       params: { courseId: courseId, nodeId: nodeID },
     });
-    console.log(courseId, nodeID);
   },
 };
-
-console.log('PREVIEW COURSE', course.value, isStudent);
 </script>
 
 <style scoped lang="scss">

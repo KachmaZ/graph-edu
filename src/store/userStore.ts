@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import type { User } from '../types';
+// @ts-ignore
 import users from '@/data/users.json';
 import router from '../router';
 

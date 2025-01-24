@@ -1,5 +1,6 @@
 import { defineStore, storeToRefs } from 'pinia';
 import type { EduCourse, EduNode, EduNodeModule } from '../types';
+// @ts-ignore
 import COURSES_DATA from '@/data/courses.json';
 import { computed, ref } from 'vue';
 import { useUserStore } from './userStore';
@@ -29,7 +30,6 @@ export const useCourseStore = defineStore('course', () => {
       commonCurrentNode.value = newNode[1];
 
       setCommonCurrentModule(commonCurrentNode.value.modules[0].id);
-      console.log(commonCurrentModule.value);
     }
   };
 
@@ -42,8 +42,6 @@ export const useCourseStore = defineStore('course', () => {
   };
 
   const getCommonNodeById = (nodeID: string) => {
-    console.log('GCNbID', commonCurrentCourse.value.nodes);
-
     return Object.values(commonCurrentCourse.value.nodes).find((node) => node.id === nodeID);
   };
 
@@ -72,7 +70,6 @@ export const useCourseStore = defineStore('course', () => {
       userCurrentNode.value = newNode[1];
 
       setUserCurrentModule(userCurrentNode.value.modules[0].id);
-      console.log(userCurrentModule.value);
     }
   };
 

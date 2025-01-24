@@ -1,20 +1,25 @@
 <template>
   <div class="course-card" @click="cardClickHandler(course.id)">
     <h4 class="course-card__title">{{ course.name }}</h4>
-    <img class="course-card__img" :src="`/public/images/${course.img}`" alt="" />
+    <img class="course-card__img" :src="imageUrl" alt="" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import useIsStudent from '../composables/useIsStudent';
 import router from '../router';
 import type { EduCourse } from '../types';
 
 const { isStudent, setCourse } = useIsStudent();
 
-defineProps<{
+const props = defineProps<{
   course: EduCourse;
 }>();
+
+const imageUrl = computed(
+  () => new URL(`../assets/images/${props.course.img}`, import.meta.url).href,
+);
 
 const cardClickHandler = (courseId: string) => {
   setCourse(courseId);

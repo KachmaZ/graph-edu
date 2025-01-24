@@ -8,7 +8,7 @@
     <div class="app-header__user">
       <template v-if="user">
         <RouterLink :to="{ name: 'Profile' }"
-          ><img class="user-avatar" src="/public/dummyAvatar.png" alt=""
+          ><img class="user-avatar" :src="dummyAvatar" alt=""
         /></RouterLink>
 
         <span class="user-name">{{ getShortName }}</span>
@@ -26,6 +26,7 @@ import { RouterLink } from 'vue-router';
 import router from '../router';
 import AppNav from '../components/AppNav.vue';
 import { ref } from 'vue';
+import dummyAvatar from '@/assets/images/dummyAvatar.png';
 
 const userStore = useUserStore();
 const { user, getShortName } = storeToRefs(userStore);

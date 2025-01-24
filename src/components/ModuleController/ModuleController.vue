@@ -35,7 +35,7 @@ const prevNextMode = ref(null);
 
 const isPreviousDisabled = computed(() => {
   const currentModuleIndex = node.value.modules.findIndex(
-    (nodeModule) => nodeModule.id === module.value.id,
+    (nodeModule) => nodeModule.id === module.value?.id,
   );
   const nodeIndex = Object.entries(course.value.nodes).findIndex(
     ([_, courseNode]) => courseNode.id === node.value.id,
@@ -60,7 +60,6 @@ const previousAction = () => {
   const moduleIndex = node.value.modules.findIndex(
     (nodeModule) => nodeModule.id === module.value?.id,
   );
-  console.log('MI', moduleIndex);
 
   if (moduleIndex === 0) {
     // Если модуль первый - к предыдущему узлу либо заблокировано

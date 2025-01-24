@@ -4,7 +4,6 @@ import CoursePageView from '../views/CourseView.vue';
 import CourseModuleView from '../views/CourseModuleView.vue';
 import LoginView from '../views/LoginView.vue';
 import { isAuthenticated, middlewarePipeline } from '../middlewares';
-import StudentCourseGridView from '../views/StudentCourseGridView.vue';
 import ProfileView from '../views/ProfileView.vue';
 
 const router = createRouter({

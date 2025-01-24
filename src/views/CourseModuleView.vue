@@ -11,20 +11,18 @@ import { useRoute } from 'vue-router';
 import useIsStudent from '../composables/useIsStudent';
 
 const route = useRoute();
-const { node, setCourse, setNode, setModule } = useIsStudent();
+const { node, setCourse, setNode } = useIsStudent();
 
 watch(
   () => route.params.courseId,
   (newID) => {
     setCourse(newID.toString());
-    console.log('CC from view', node.value.id);
   },
 );
 watch(
   () => route.params.nodeId,
   (newID) => {
     setNode(newID.toString());
-    console.log('CN from view', node.value.id);
   },
 );
 </script>
