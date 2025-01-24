@@ -1,0 +1,279 @@
+[
+  {
+    "id": "1",
+    "email": "student@example.com",
+    "password": "student",
+    "name": "Иван",
+    "surname": "Иванов",
+    "patronimic": "Иванович",
+    "role": "student",
+    "courses": [
+      {
+        "id": "1",
+        "name": "Разработка на VueJS",
+        "img": "Vue.png",
+        "students": ["1"],
+        "nodes": {
+          "1": {
+            "id": "1",
+            "name": "Основы",
+            "root": true,
+            "status": "passed",
+            "modules": [
+              {
+                "id": "11",
+                "title": "Фреймворк VueJS",
+                "content": "Ещё пишется",
+                "status": "passed"
+              },
+              {
+                "id": "12",
+                "title": "Инициализация проекта",
+                "content": "Тоже пишется",
+                "status": "passed"
+              },
+              {
+                "id": "13",
+                "title": "Что-нибудь ещё",
+                "content": "К дедлайну будет",
+                "status": "passed"
+              }
+            ]
+          },
+          "2": {
+            "id": "2",
+            "name": "Компоненты",
+            "status": "passed",
+            "modules": [
+              { "id": "21", "title": "Компонентный подход", "content": "Ещё пишется" },
+              {
+                "id": "22",
+                "title": "Составные части компонента",
+                "content": "Тоже пишется",
+                "status": "passed"
+              }
+            ]
+          },
+          "3": {
+            "id": "3",
+            "name": "OptionsAPI и CompositionAPI",
+            "status": "passed",
+            "modules": [
+              {
+                "id": "31",
+                "title": "Способы определения компонентов",
+                "content": "Ещё пишется",
+                "status": "passed"
+              },
+              { "id": "32", "title": "OptionsAPI", "content": "Тоже пишется", "status": "passed" }
+            ]
+          },
+          "4": {
+            "id": "4",
+            "name": "Маршрутизация (Router)",
+            "status": "passed",
+            "modules": [
+              {
+                "id": "41",
+                "title": "Фреймворк VueJS",
+                "content": "Ещё пишется",
+                "status": "passed"
+              },
+              {
+                "id": "42",
+                "title": "Инициализация проекта",
+                "content": "Тоже пишется",
+                "status": "passed"
+              }
+            ]
+          },
+          "5": {
+            "id": "5",
+            "name": "Анимации",
+            "status": "available",
+            "modules": [
+              {
+                "id": "51",
+                "title": "Фреймворк VueJS",
+                "content": "Ещё пишется",
+                "status": "available"
+              },
+              {
+                "id": "52",
+                "title": "Инициализация проекта",
+                "content": "Тоже пишется",
+                "status": "closed"
+              }
+            ]
+          },
+          "6": {
+            "id": "6",
+            "name": "Хранилище (Store)",
+            "status": "available",
+            "modules": [
+              {
+                "id": "61",
+                "title": "Фреймворк VueJS",
+                "content": "Ещё пишется",
+                "status": "available"
+              },
+              {
+                "id": "62",
+                "title": "Инициализация проекта",
+                "content": "Тоже пишется",
+                "status": "closed"
+              }
+            ]
+          },
+          "7": {
+            "id": "7",
+            "name": "Динамическая разметка",
+            "modules": [
+              { "id": "71", "title": "Заглушка 1", "content": "Заглушечный 1", "status": "closed" },
+              { "id": "72", "title": "Заглушка 2", "content": "Заглушечный 1", "status": "closed" }
+            ],
+            "status": "closed"
+          },
+          "8": {
+            "id": "8",
+            "name": "Работа с API",
+            "modules": [
+              { "id": "81", "title": "Заглушка 1", "content": "Заглушечный 1", "status": "closed" },
+              { "id": "82", "title": "Заглушка 2", "content": "Заглушечный 1", "status": "closed" }
+            ],
+            "status": "closed"
+          }
+        },
+
+        "edges": {
+          "edge1": { "source": "1", "target": "2" },
+          "edge2": { "source": "2", "target": "3" },
+          "edge3": { "source": "3", "target": "4" },
+          "edge4": { "source": "4", "target": "5" },
+          "edge5": { "source": "4", "target": "6" },
+          "edge6": { "source": "6", "target": "7" },
+          "edge7": { "source": "6", "target": "8" }
+        },
+
+        "layouts": {
+          "nodes": {
+            "1": { "x": 0, "y": 0 },
+            "2": { "x": 0, "y": 100 },
+            "3": { "x": 0, "y": 200 },
+            "4": { "x": 0, "y": 300 },
+            "5": { "x": 100, "y": 400 },
+            "6": { "x": -100, "y": 400 },
+            "7": { "x": -200, "y": 500 },
+            "8": { "x": 0, "y": 500 }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "email": "teacher@example.com",
+    "password": "teacher",
+    "name": "Петр",
+    "surname": "Петров",
+    "patronimic": "Петрович",
+    "role": "teacher",
+    "courses": [
+      {
+        "id": "1",
+        "name": "Разработка на VueJS",
+        "students": ["1"],
+        "nodes": {
+          "1": {
+            "name": "Основы",
+            "root": true,
+            "modules": [
+              { "id": 111, "title": "Фреймворк VueJS", "content": "Ещё пишется" },
+              { "id": 112, "title": "Инициализация проекта", "content": "Тоже пишется" }
+            ],
+            "status": "passed"
+          },
+          "2": {
+            "name": "Компоненты",
+            "status": "passed",
+            "modules": [
+              { "id": 211, "title": "Компонентный подход", "content": "Ещё пишется" },
+              { "id": 212, "title": "Составные части компонента", "content": "Тоже пишется" }
+            ]
+          },
+          "3": {
+            "name": "OptionsAPI и CompositionAPI",
+            "status": "passed",
+            "modules": [
+              { "id": 311, "title": "Способы определения компонентов", "content": "Ещё пишется" },
+              { "id": 312, "title": "OptionsAPI", "content": "Тоже пишется" }
+            ]
+          },
+          "4": {
+            "name": "Маршрутизация (Router)",
+            "status": "passed",
+            "modules": [
+              { "id": 411, "title": "Фреймворк VueJS", "content": "Ещё пишется" },
+              { "id": 412, "title": "Инициализация проекта", "content": "Тоже пишется" }
+            ]
+          },
+          "5": {
+            "name": "Анимации",
+            "status": "available",
+            "modules": [
+              { "id": 511, "title": "Фреймворк VueJS", "content": "Ещё пишется" },
+              { "id": 512, "title": "Инициализация проекта", "content": "Тоже пишется" }
+            ]
+          },
+          "6": {
+            "name": "Хранилище (Store)",
+            "status": "available",
+            "modules": [
+              { "id": 611, "title": "Фреймворк VueJS", "content": "Ещё пишется" },
+              { "id": 612, "title": "Инициализация проекта", "content": "Тоже пишется" }
+            ]
+          },
+          "7": {
+            "name": "Динамическая разметка",
+            "status": "closed",
+            "modules": [
+              { "id": 711, "title": "Фреймворк VueJS", "content": "Ещё пишется" },
+              { "id": 712, "title": "Инициализация проекта", "content": "Тоже пишется" }
+            ]
+          },
+          "8": {
+            "name": "Работа с API",
+            "status": "closed",
+            "modules": [
+              { "id": 711, "title": "Фреймворк VueJS", "content": "Ещё пишется" },
+              { "id": 712, "title": "Инициализация проекта", "content": "Тоже пишется" }
+            ]
+          }
+        },
+
+        "edges": {
+          "edge1": { "source": "1", "target": "2" },
+          "edge2": { "source": "2", "target": "3" },
+          "edge3": { "source": "3", "target": "4" },
+          "edge4": { "source": "4", "target": "5" },
+          "edge5": { "source": "4", "target": "6" },
+          "edge6": { "source": "6", "target": "7" },
+          "edge7": { "source": "6", "target": "8" }
+        },
+
+        "layouts": {
+          "nodes": {
+            "1": { "x": 0, "y": 0 },
+            "2": { "x": 0, "y": 100 },
+            "3": { "x": 0, "y": 200 },
+            "4": { "x": 0, "y": 300 },
+            "5": { "x": 100, "y": 400 },
+            "6": { "x": -100, "y": 400 },
+            "7": { "x": -200, "y": 500 },
+            "8": { "x": 0, "y": 500 }
+          }
+        }
+      }
+    ]
+  }
+]
