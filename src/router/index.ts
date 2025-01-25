@@ -5,6 +5,8 @@ import CourseModuleView from '../views/CourseModuleView.vue';
 import LoginView from '../views/LoginView.vue';
 import { isAuthenticated, middlewarePipeline } from '../middlewares';
 import ProfileView from '../views/ProfileView.vue';
+import HeaderLayout from '../layouts/HeaderLayout.vue';
+import HeadSidebarLayout from '../layouts/HeadSidebarLayout.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,7 +16,7 @@ const router = createRouter({
       path: '/',
       component: CourseGrid,
       meta: {
-        layout: 'HeaderLayout',
+        layout: HeaderLayout,
       },
     },
     {
@@ -22,7 +24,7 @@ const router = createRouter({
       path: '/course/:courseId',
       component: CoursePageView,
       meta: {
-        layout: 'HeadSidebarLayout',
+        layout: HeadSidebarLayout,
       },
     },
     {
@@ -30,7 +32,7 @@ const router = createRouter({
       path: '/course/:courseId/:nodeId',
       component: CourseModuleView,
       meta: {
-        layout: 'HeadSidebarLayout',
+        layout: HeadSidebarLayout,
       },
     },
     {
@@ -44,7 +46,7 @@ const router = createRouter({
       component: CourseGrid,
       meta: {
         middlewares: [isAuthenticated],
-        layout: 'HeaderLayout',
+        layout: HeaderLayout,
       },
     },
     {
@@ -53,7 +55,7 @@ const router = createRouter({
       component: CoursePageView,
       meta: {
         middlewares: [isAuthenticated],
-        layout: 'HeadSidebarLayout',
+        layout: HeadSidebarLayout,
       },
     },
     {
@@ -61,7 +63,7 @@ const router = createRouter({
       path: '/student/course/:courseId/:nodeId',
       component: CourseModuleView,
       meta: {
-        layout: 'HeadSidebarLayout',
+        layout: HeadSidebarLayout,
       },
     },
     {
@@ -70,7 +72,7 @@ const router = createRouter({
       component: ProfileView,
       meta: {
         middlewares: [isAuthenticated],
-        layout: 'HeaderLayout',
+        layout: HeaderLayout,
       },
     },
   ],
