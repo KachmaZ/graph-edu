@@ -95,6 +95,7 @@
   {
     "id": "2",
     "name": "Разработка на ReactJS",
+    "description": "Описание курса на реакте",
     "img": "React.png",
     "themeColor": "blue",
     "students": ["1"],

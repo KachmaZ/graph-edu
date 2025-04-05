@@ -1,18 +1,18 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import type { User } from '../types';
-// @ts-ignore
-import users from '@/data/users.json';
+import rawUsers from '@/data/users.json';
 import router from '../router';
 
 export const useUserStore = defineStore('users', () => {
   const user = ref<User | null>(null);
+  const users = rawUsers as User[];
 
   const isAuthenticated = computed(() => user.value !== null);
 
   const login = (email: string, password: string) => {
     const loginUser = users.find((user: User) => user.email === email);
-    if (loginUser.password === password) {
+    if (loginUser?.password === password) {
       localStorage.setItem('graph_edu_email', email);
       localStorage.setItem('graph_edu_password', password);
       user.value = { ...loginUser };

@@ -15,7 +15,7 @@ import lockedIconSrc from '@/assets/images/icons/locked.svg';
 defineProps<{
   itemNumber: number;
   title: string;
-  status: 'closed' | 'passed' | 'available';
+  status: 'closed' | 'passed' | 'available' | 'current';
 }>();
 </script>
 

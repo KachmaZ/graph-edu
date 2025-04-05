@@ -50,8 +50,8 @@ const graph = computed(() => {
     }
 
     if (nodeValue.root) {
-      result.nodes[nodeId].normal.strokeWidth = 3;
-      result.nodes[nodeId].normal.strokeColor = '#f1f1f1';
+      result.nodes[nodeId].normal!.strokeWidth = 3;
+      result.nodes[nodeId].normal!.strokeColor = '#f1f1f1';
     }
   }
 

@@ -8,7 +8,7 @@
         :item-number="index + 1"
         :title="nodeModule.title"
         :status="nodeModule.status"
-        :class="nodeModule.id == module.id ? 'current' : ''"
+        :class="nodeModule.id == module?.id ? 'current' : ''"
         @click="moduleLinkHandler(node.id, nodeModule.id)"
       />
     </div>

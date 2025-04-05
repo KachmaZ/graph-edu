@@ -22,7 +22,7 @@ export default function useCourseTheme(
   };
 
   return {
-    backgroundColor: colorByTheme[course.themeColor],
+    backgroundColor: colorByTheme[course.themeColor as keyof typeof colorByTheme],
     backgroundImage: `url(${imgByType[type]})`,
   };
 }

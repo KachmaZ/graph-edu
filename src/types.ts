@@ -1,11 +1,11 @@
 import * as vNG from 'v-network-graph';
-
+// ГРАФ
 export interface EduNodeOptions {
   color: string;
   strokeColor: string;
   strokeWidth: number;
 }
-
+// КУРС
 export interface EduNodeContent {
   id: string;
   modules: EduNodeModule[];
@@ -16,17 +16,22 @@ export interface EduCourse {
   img: string;
   name: string;
   description: string;
-  themeColor: 'green' | 'blue' | 'purple' | 'pink';
+  themeColor: 'green' | 'blue' | 'purple' | 'pink' | string;
   nodes: Record<string, EduNode>;
   edges: Record<string, EduEdge>;
+}
+export interface EduEdge extends vNG.Edge {
+  width: number;
+  color: string;
+  dashed?: boolean;
 }
 
 export interface EduNode extends vNG.Node {
   id: string;
-  status: 'passed' | 'available' | 'closed';
+  status?: 'passed' | 'available' | 'closed';
   modules: EduNodeModule[];
-  normal: Partial<EduNodeOptions>;
-  hover: Partial<EduNodeOptions>;
+  normal?: Partial<EduNodeOptions>;
+  hover?: Partial<EduNodeOptions>;
 }
 
 export interface EduNodeModule {
@@ -48,12 +53,8 @@ export type EduModuleContent = string;
 //   options: string[];
 //   correctOption: string;
 // };
-export interface EduEdge extends vNG.Edge {
-  width: number;
-  color: string;
-  dashed?: boolean;
-}
 
+// ПОЛЬЗОВАТЛЬ
 export interface User {
   id: string;
   email: string;
