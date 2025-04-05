@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-// import { storeToRefs } from 'pinia';
-// import { useCourseStore } from '../store/courseStore';
 import ModuleController from '../components/ModuleController/ModuleController.vue';
 import { watch } from 'vue';
 import { useRoute } from 'vue-router';

@@ -1,0 +1,140 @@
+@use './colors.scss';
+
+@mixin setup-fonts {
+  body {
+    font-family: 'Proxima Nova';
+    font-weight: normal;
+  }
+
+  h1 {
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 78px;
+  }
+
+  h2 {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 58px;
+  }
+
+  h3 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 40px;
+  }
+
+  h4 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 32px;
+  }
+
+  .text {
+    &-big {
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    &-main {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    &-small {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    &-label {
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+}
+
+@mixin color-scheme-base($scheme) {
+  @if $scheme == primary {
+    background-color: $primary;
+    color: $text-black;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+    &:active {
+      background-color: $primary-pressing;
+    }
+    &:disabled {
+      background-color: $bg-transparency;
+      color: $text-pressing;
+    }
+  }
+  @if $scheme == secondary {
+    background-color: $secondary;
+    color: $text-black;
+
+    &:hover {
+      background-color: $secondary-hover;
+    }
+    &:active {
+      background-color: $secondary-pressing;
+    }
+    &:disabled {
+      background-color: $bg-transparency;
+      color: $text-pressing;
+    }
+  }
+  @if $scheme == dark {
+    background-color: $bg-transparency;
+    color: $text-black;
+
+    &:hover {
+      background-color: $bg-transparency-hover;
+    }
+    &:active {
+      background-color: $bg-transparency-active;
+    }
+    &:disabled {
+      color: $text-pressing;
+    }
+  }
+  @if $scheme == status {
+    &.status-available {
+      background-color: $secondary;
+      &:hover {
+        background-color: $secondary-hover;
+      }
+      &:active {
+        background-color: $primary;
+      }
+      &:disabled {
+        background-color: $bg-transparency;
+      }
+    }
+    &.status-passed {
+      background-color: $status-positive;
+      &:hover {
+        background-color: $secondary-hover;
+      }
+      &:active {
+        background-color: $primary;
+      }
+      &:disabled {
+        background-color: $bg-transparency;
+      }
+    }
+    &.status-current {
+      background-color: $primary;
+      &:hover {
+        background-color: $secondary-hover;
+      }
+      &:active {
+        background-color: $primary;
+      }
+      &:disabled {
+        background-color: $bg-transparency;
+      }
+    }
+  }
+}
+// В чём смысл разных зелёных цветов узлов графа?

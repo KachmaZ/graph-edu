@@ -15,14 +15,10 @@ export interface EduCourse {
   id: string;
   img: string;
   name: string;
+  description: string;
+  themeColor: 'green' | 'blue' | 'purple' | 'pink';
   nodes: Record<string, EduNode>;
   edges: Record<string, EduEdge>;
-}
-
-export interface EduNodeModule {
-  id: string;
-  title: string;
-  content: string;
 }
 
 export interface EduNode extends vNG.Node {
@@ -33,6 +29,25 @@ export interface EduNode extends vNG.Node {
   hover: Partial<EduNodeOptions>;
 }
 
+export interface EduNodeModule {
+  id: string;
+  title: string;
+  contentType: 'article' | 'video' | 'test';
+  content: EduModuleContent;
+  status: 'available' | 'passed' | 'current' | 'closed';
+}
+
+export type EduModuleContent = string;
+// export type ModuleContent = MCArticle | MCVideo | MCTest
+// Это на новый год
+// type MCArticle = string // Полный текст, возможно в формате html
+// type MCVideo = string // Ссылка на видеофайл
+// type MCTest = MCTestQuestion[]
+// type MCTestQuestion = {
+//   question: string;
+//   options: string[];
+//   correctOption: string;
+// };
 export interface EduEdge extends vNG.Edge {
   width: number;
   color: string;
@@ -47,5 +62,5 @@ export interface User {
   surname: string;
   patronimic: string;
   role: 'student' | 'teacher';
-  courses: EduCourse[];
+  courses: string[];
 }

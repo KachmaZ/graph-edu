@@ -10,7 +10,6 @@
     </div>
     <div class="module-controller__content">
       <component :is="contentComponent" v-bind="{ prevNextMode }">
-        <h2>{{ module?.title }}</h2>
         {{ module?.content }}
       </component>
     </div>
@@ -110,17 +109,19 @@ const nextAction = () => {
 <style scoped lang="scss">
 .module-controller {
   height: 100%;
+  padding: 35px 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  border-radius: 20px;
+  border-radius: 25px;
+  background-color: $bg-transparency;
   overflow: hidden;
+
   &__nav,
   &__controls {
-    height: 60px;
+    height: 100px;
     width: 100%;
-    background-color: #718b8d;
   }
 
   &__content {

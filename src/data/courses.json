@@ -2,6 +2,8 @@
   {
     "id": "1",
     "name": "Разработка на VueJS",
+    "description": "Создадим игру на Vue.js от начала разработки интерфейса до реализации алгоритмов на JavaScript и разместим её в каталоге приложений ВК.",
+    "themeColor": "green",
     "img": "Vue.png",
     "students": ["1"],
     "nodes": {
@@ -68,13 +70,13 @@
     },
 
     "edges": {
-      "edge1": { "source": "1", "target": "2" },
-      "edge2": { "source": "2", "target": "3" },
-      "edge3": { "source": "3", "target": "4" },
-      "edge4": { "source": "4", "target": "5" },
-      "edge5": { "source": "4", "target": "6" },
-      "edge6": { "source": "6", "target": "7" },
-      "edge7": { "source": "6", "target": "8" }
+      "1": { "source": "1", "target": "2" },
+      "2": { "source": "2", "target": "3" },
+      "3": { "source": "3", "target": "4" },
+      "4": { "source": "4", "target": "5" },
+      "5": { "source": "4", "target": "6" },
+      "6": { "source": "6", "target": "7" },
+      "7": { "source": "6", "target": "8" }
     },
 
     "layouts": {
@@ -94,6 +96,7 @@
     "id": "2",
     "name": "Разработка на ReactJS",
     "img": "React.png",
+    "themeColor": "blue",
     "students": ["1"],
     "nodes": {
       "1": {

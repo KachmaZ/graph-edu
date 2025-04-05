@@ -20,3 +20,7 @@ onMounted(() => {
   }
 });
 </script>
+
+<style lang="scss">
+@include setup-fonts;
+</style>

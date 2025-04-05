@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CourseCardGrid :courses="userCourses" mode="user" />
+    <CourseCardGrid :courses="userCourses" userMode />
   </div>
 </template>
 

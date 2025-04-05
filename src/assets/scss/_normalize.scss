@@ -12,7 +12,8 @@ html {
 }
 
 body {
-  color: #fff;
+  color: $text-light-grey;
+  background-color: $bg-black;
 }
 
 article,
@@ -54,6 +55,8 @@ template,
 
 a {
   background-color: transparent;
+
+  text-decoration: none;
 
   text-decoration-skip: objects;
 }
@@ -143,8 +146,6 @@ input,
 select,
 textarea {
   margin: 0;
-
-  font: inherit;
 }
 
 optgroup {
@@ -241,7 +242,6 @@ textarea {
 }
 
 header,
-main,
 footer {
-  padding: 0 20px;
+  padding: 0 60px;
 }

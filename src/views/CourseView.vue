@@ -1,32 +1,21 @@
 <template>
   <div class="course-page">
-    <h1 class="course-page__title">{{ course.name }}</h1>
-    <GraphVisualizer :course="course" :eventHandlers="eventHandlers" />
+    <div class="course-page__head">
+      <CoursePageHead :course="course" />
+    </div>
+    <div class="course-page__content">
+      <h2>Содержание курса</h2>
+      <CoursePageContent :course="course" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import * as vNG from 'v-network-graph';
-import { useRoute } from 'vue-router';
-import router from '../router';
-import GraphVisualizer from '../components/GraphVisualizer.vue';
 import useIsStudent from '../composables/useIsStudent';
+import CoursePageHead from '../components/CoursePage/CoursePageHead.vue';
+import CoursePageContent from '../components/CoursePage/CoursePageContent.vue';
 
-const { courseId } = useRoute().params;
-
-const { isStudent, course, node, setNode, setModule } = useIsStudent();
-
-const eventHandlers: vNG.EventHandlers = {
-  'node:click': ({ node: nodeID }) => {
-    setNode(nodeID);
-    setModule(node.value.modules[0].id);
-
-    router.push({
-      name: isStudent ? 'StudentCourseModule' : 'CourseModule',
-      params: { courseId: courseId, nodeId: nodeID },
-    });
-  },
-};
+const { course } = useIsStudent();
 </script>
 
 <style scoped lang="scss">
@@ -34,8 +23,8 @@ const eventHandlers: vNG.EventHandlers = {
   height: 100%;
   padding: 20px 0;
 
-  &__title {
-    text-align: center;
+  &__head {
+    margin-bottom: 120px;
   }
 }
 </style>

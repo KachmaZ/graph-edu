@@ -28,6 +28,10 @@ export const useUserStore = defineStore('users', () => {
     router.push({ name: 'Login' });
   };
 
+  const getFirstLetters = computed(() => {
+    return `${user.value?.name[0]}${user.value?.surname[0]}`;
+  });
+
   const getShortName = computed(() => {
     if (user.value) {
       return `${user.value?.surname} ${user.value?.name[0]}.${user.value?.patronimic[0]}.`;
@@ -44,6 +48,7 @@ export const useUserStore = defineStore('users', () => {
     user,
     isAuthenticated,
 
+    getFirstLetters,
     getShortName,
     getFullName,
 

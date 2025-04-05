@@ -1,0 +1,10 @@
+$header_height: 115px;
+$footer_height: 180px;
+
+$sidebar-width: 435px;
+
+$app_width: 1720px;
+$main_width: $app_width;
+$main_with_sidebar_width: calc($app_width - $sidebar-width - 20px);
+
+$main_min_height: 100vh;

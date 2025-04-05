@@ -1,26 +1,16 @@
 <template>
   <aside class="app-sidebar">
-    <div class="app-sidebar__nodes">
-      <div
-        class="app-sidebar__nodes--item"
-        v-for="[nodeId, node] of Object.entries(course.nodes)"
-        :key="node.id"
-      >
-        <div class="node" v-if="node.modules.length > 0" :class="node.status">
-          <span class="node__title">{{ node.name }}</span>
-          <hr />
-          <div class="node__modules">
-            <span
-              v-for="nodeModule in node.modules"
-              :key="nodeModule.id"
-              :class="nodeModule.id === module?.id ? 'active' : ''"
-              @click="moduleLinkHandler(nodeId, nodeModule.id)"
-            >
-              {{ nodeModule.title }}
-            </span>
-          </div>
-        </div>
-      </div>
+    <div class="app-sidebar__modules">
+      <h4 class="node__title">{{ node.name }}</h4>
+      <UISideTab
+        v-for="(nodeModule, index) in node.modules"
+        :key="nodeModule.id"
+        :item-number="index + 1"
+        :title="nodeModule.title"
+        :status="nodeModule.status"
+        :class="nodeModule.id == module.id ? 'current' : ''"
+        @click="moduleLinkHandler(node.id, nodeModule.id)"
+      />
     </div>
   </aside>
 </template>
@@ -28,8 +18,9 @@
 <script setup lang="ts">
 import router from '../router';
 import useIsStudent from '../composables/useIsStudent';
+import UISideTab from '../components/UIkit/UISideTab.vue';
 
-const { isStudent, module, course, setNode, setModule } = useIsStudent();
+const { isStudent, course, node, module, setNode, setModule } = useIsStudent();
 
 const moduleLinkHandler = (nodeId: string, moduleId: string) => {
   setNode(nodeId);
@@ -39,74 +30,39 @@ const moduleLinkHandler = (nodeId: string, moduleId: string) => {
     params: { courseId: course.value.id, nodeId },
   });
 };
+
+console.log(node.value.id);
 </script>
 
 <style scoped lang="scss">
 .app-sidebar {
-  width: 200px;
-  height: 90vh;
+  width: $sidebar-width;
+  min-height: 100%;
 
   padding: 10px;
 
   position: fixed;
-  top: 60px;
+  top: 115px;
   left: 0;
 
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  background-color: #718b8d;
+  background-color: $bg-black;
   border-radius: 0 0 20px 0;
 
   font-size: 16px;
 
-  &__nodes {
+  &__modules {
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
 
-    overflow-y: scroll;
-
-    &--item {
-      .node {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        background-color: #2f5759;
-        border-radius: 8px;
-        overflow: hidden;
-
-        &.passed {
-          background-color: #999b28;
-        }
-
-        &.closed {
-          background-color: #575757;
-          pointer-events: none;
-        }
-
-        &__modules {
-          display: flex;
-          flex-direction: column;
-        }
-        &__title {
-          padding: 8px;
-        }
-
-        &__modules {
-          span {
-            padding: 8px;
-
-            cursor: pointer;
-
-            &:hover,
-            &.active {
-              background-color: #617a7b;
-            }
-          }
-        }
+    .node {
+      &__title {
+        margin-bottom: 20px;
       }
     }
   }

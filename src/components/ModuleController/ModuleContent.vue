@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="module-content">
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped lang="scss"></style>

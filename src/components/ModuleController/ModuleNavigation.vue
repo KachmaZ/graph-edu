@@ -1,32 +1,26 @@
 <template>
   <div class="module-navigation">
     <div class="module-navigation__title">
-      <h4>{{ nodeTitle }}</h4>
+      <h3>{{ nodeTitle }}</h3>
     </div>
     <div class="module-navigation__items">
-      <div
+      <UIProgressButton
         v-if="nodeIndex !== 0"
-        :class="['module-navigation__items--item', prevNextMode === 'prev' ? 'active' : '']"
         @click="prevNextClickHandler('prev')"
+        status="available"
+        >P</UIProgressButton
       >
-        P
-      </div>
-      <div
+      <UIProgressButton
         v-for="(nodeModule, index) in nodeModules"
-        class="module-navigation__items--item"
-        :class="module?.id === nodeModule.id && prevNextMode === null ? 'active' : ''"
-        :key="nodeModule.id"
+        :class="module?.id === nodeModule.id && 'status-current'"
+        :status="nodeModule.status"
+        :disabled="nodeModule.status === 'closed'"
+        :key="index"
         @click="moduleClickHandler(nodeModule.id)"
+      />
+      <UIProgressButton @click="prevNextClickHandler('next')" status="available"
+        >N</UIProgressButton
       >
-        {{ index + 1 }}
-      </div>
-
-      <div
-        :class="['module-navigation__items--item', prevNextMode === 'next' ? 'active' : '']"
-        @click="prevNextClickHandler('next')"
-      >
-        N
-      </div>
     </div>
   </div>
 </template>
@@ -37,6 +31,7 @@ import useIsStudent from '../../composables/useIsStudent';
 import ModulePrevNextNode from './ModulePrevNextNode.vue';
 import ModuleContent from './ModuleContent.vue';
 import { computed, watch } from 'vue';
+import UIProgressButton from '../UIkit/UIProgressButton.vue';
 
 const chosenComponent = defineModel('chosenComponent');
 const prevNextMode = defineModel('prevNextMode');
@@ -77,33 +72,16 @@ watch(module, () => {
 
   padding: 0 20px;
 
-  display: flex;
-  align-items: center;
-
   gap: 20px;
+
+  &__title {
+    margin-bottom: 20px;
+  }
 
   &__items {
     display: flex;
     align-items: center;
     gap: 4px;
-
-    &--item {
-      width: 30px;
-      height: 30px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 1px solid white;
-      border-radius: 4px;
-
-      cursor: pointer;
-      &.active {
-        background: white;
-        color: #000;
-      }
-    }
   }
 }
 </style>

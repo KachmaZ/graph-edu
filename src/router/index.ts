@@ -7,6 +7,9 @@ import { isAuthenticated, middlewarePipeline } from '../middlewares';
 import ProfileView from '../views/ProfileView.vue';
 import HeaderLayout from '../layouts/HeaderLayout.vue';
 import HeadSidebarLayout from '../layouts/HeadSidebarLayout.vue';
+import UIkitView from '../views/UIkitView.vue';
+import StudentCourseGridView from '../views/StudentCourseGridView.vue';
+import MyCourseView from '../views/MyCourseView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,7 +27,7 @@ const router = createRouter({
       path: '/course/:courseId',
       component: CoursePageView,
       meta: {
-        layout: HeadSidebarLayout,
+        layout: HeaderLayout,
       },
     },
     {
@@ -43,7 +46,7 @@ const router = createRouter({
     {
       name: 'StudentCourseGrid',
       path: '/student',
-      component: CourseGrid,
+      component: StudentCourseGridView,
       meta: {
         middlewares: [isAuthenticated],
         layout: HeaderLayout,
@@ -52,10 +55,10 @@ const router = createRouter({
     {
       name: 'StudentCoursePage',
       path: '/student/course/:courseId',
-      component: CoursePageView,
+      component: MyCourseView,
       meta: {
         middlewares: [isAuthenticated],
-        layout: HeadSidebarLayout,
+        layout: HeaderLayout,
       },
     },
     {
@@ -72,6 +75,14 @@ const router = createRouter({
       component: ProfileView,
       meta: {
         middlewares: [isAuthenticated],
+        layout: HeaderLayout,
+      },
+    },
+    {
+      name: 'UIkit',
+      path: '/uikit',
+      component: UIkitView,
+      meta: {
         layout: HeaderLayout,
       },
     },

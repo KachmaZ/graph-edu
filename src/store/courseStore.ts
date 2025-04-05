@@ -2,6 +2,8 @@ import { defineStore, storeToRefs } from 'pinia';
 import type { EduCourse, EduNode, EduNodeModule } from '../types';
 // @ts-ignore
 import COURSES_DATA from '@/data/courses.json';
+// @ts-ignore
+import USER_COURSES_DATA from '@/data/coursesInProgress.json';
 import { computed, ref } from 'vue';
 import { useUserStore } from './userStore';
 
@@ -47,7 +49,9 @@ export const useCourseStore = defineStore('course', () => {
 
   const userCourses = computed<EduCourse[]>(() => {
     if (user.value) {
-      return user.value.courses;
+      return USER_COURSES_DATA.filter((course: EduCourse) =>
+        user.value.courses.includes(course.id),
+      );
     } else {
       return [];
     }

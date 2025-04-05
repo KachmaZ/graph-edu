@@ -3,19 +3,20 @@
     class="graph"
     style="width: 100%; height: 100%"
     :configs="initialCongigs"
-    :eventHandlers="eventHandlers"
+    :eventHandlers="!demoMode ? eventHandlers : () => {}"
     v-bind="{ ...graph }"
   />
 </template>
 
 <script setup lang="ts">
-import type { EduCourse, EduNode } from '../types';
+import type { EduCourse } from '../types';
 import * as vNG from 'v-network-graph';
 import { computed } from 'vue';
 
 const { course, eventHandlers } = defineProps<{
   course: EduCourse;
   eventHandlers: vNG.EventHandlers;
+  demoMode?: boolean;
 }>();
 
 const graph = computed(() => {
@@ -27,60 +28,74 @@ const graph = computed(() => {
 
     if (nodeValue.status === 'passed') {
       result.nodes[nodeId].normal = {
-        color: '#fdff99',
+        color: '#6BBEA0',
       };
       result.nodes[nodeId].hover = {
-        color: '#fff5ba',
+        color: '#D0DAFF',
       };
     } else if (nodeValue.status === 'available') {
       result.nodes[nodeId].normal = {
-        color: '#99f6ff',
+        color: '#A2B3F6',
       };
       result.nodes[nodeId].hover = {
-        color: '#d5fcff',
+        color: '#D0DAFF',
       };
     } else if (nodeValue.status === 'closed') {
       result.nodes[nodeId].normal = {
-        color: '#acacac',
+        color: '#999A9E',
       };
       result.nodes[nodeId].hover = {
-        color: '#acacac',
+        color: '#999A9E',
       };
     }
 
     if (nodeValue.root) {
       result.nodes[nodeId].normal.strokeWidth = 3;
-      result.nodes[nodeId].normal.strokeColor = '#fee243';
+      result.nodes[nodeId].normal.strokeColor = '#f1f1f1';
     }
   }
 
   return result;
 });
 
-const initialCongigs = {
-  grid: {
-    visible: true,
+const initialCongigs: vNG.UserConfigs = {
+  view: {
+    zoomEnabled: false,
   },
   node: {
     normal: {
-      color: (node: EduNode) => node.normal.color ?? '#FFFFFF',
-      strokeWidth: (node: EduNode) => node.normal.strokeWidth,
-      strokeColor: (node: EduNode) => node.normal.strokeColor,
+      color: (node: vNG.Node) => node.normal.color ?? '#A2B3F6',
+      strokeWidth: (node: vNG.Node) => node.normal.strokeWidth,
+      strokeColor: (node: vNG.Node) => node.normal.strokeColor,
     },
     hover: {
-      color: (node: EduNode) => node.hover.color ?? '#99f6ff',
-      strokeWidth: (node: EduNode) => node.hover.strokeWidth,
-      strokeColor: (node: EduNode) => node.hover.strokeColor,
+      color: (node: vNG.Node) => node.hover.color ?? '#D0DAFF',
+      strokeWidth: (node: vNG.Node) => node.hover.strokeWidth,
+      strokeColor: (node: vNG.Node) => node.hover.strokeColor,
+    },
+    selected: {
+      color: (node: vNG.Node) => node.hover.color ?? '#6F8FF0',
+      strokeWidth: (node: vNG.Node) => node.hover.strokeWidth,
+      strokeColor: (node: vNG.Node) => node.hover.strokeColor,
     },
     label: {
       visible: true,
-      fontFamily: undefined,
-      fontSize: 11,
+      fontFamily: 'Proxima Nova',
+      fontSize: 18,
       lineHeight: 1.1,
-      color: '#FFFFFF',
-      margin: 4,
-      direction: 'south',
+      color: '#33343d',
+      margin: 17,
+      direction: 'north',
       text: 'name',
+      background: (node: vNG.Node) => ({
+        visible: true,
+        color: node.normal.color ?? '#A2B3F6',
+        padding: {
+          vertical: 5,
+          horizontal: 15,
+        },
+        borderRadius: 10,
+      }),
     },
   },
 };
