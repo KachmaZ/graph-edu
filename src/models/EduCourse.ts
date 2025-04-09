@@ -1,0 +1,55 @@
+import * as vNG from 'v-network-graph';
+// ГРАФ
+export interface EduNodeOptions {
+  color: string;
+  strokeColor: string;
+  strokeWidth: number;
+}
+// КУРС
+export interface EduNodeContent {
+  id: string;
+  modules: EduNodeModule[];
+}
+
+export interface EduCourse {
+  id: string;
+  img: string;
+  name: string;
+  description: string;
+  themeColor: 'green' | 'blue' | 'purple' | 'pink' | string;
+  nodes: Record<string, EduNode>;
+  edges: Record<string, EduEdge>;
+}
+export interface EduEdge extends vNG.Edge {
+  width: number;
+  color: string;
+  dashed?: boolean;
+}
+
+export interface EduNode extends vNG.Node {
+  id: string;
+  status?: 'passed' | 'available' | 'closed';
+  modules: EduNodeModule[];
+  normal?: Partial<EduNodeOptions>;
+  hover?: Partial<EduNodeOptions>;
+}
+
+export interface EduNodeModule {
+  id: string;
+  title: string;
+  contentType: 'article' | 'video' | 'test';
+  content: EduModuleContent;
+  status: 'available' | 'passed' | 'current' | 'closed';
+}
+
+export type EduModuleContent = string;
+// export type ModuleContent = MCArticle | MCVideo | MCTest
+// Это на новый год
+// type MCArticle = string // Полный текст, возможно в формате html
+// type MCVideo = string // Ссылка на видеофайл
+// type MCTest = MCTestQuestion[]
+// type MCTestQuestion = {
+//   question: string;
+//   options: string[];
+//   correctOption: string;
+// };

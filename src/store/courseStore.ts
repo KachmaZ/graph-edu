@@ -27,7 +27,7 @@ export const useCourseStore = defineStore('course', () => {
 
   const setCommonCurrentNode = (nodeID: string) => {
     const newNode = Object.entries(commonCurrentCourse.value.nodes).find(([_, node]) => {
-      return node.id.toString() === nodeID;
+      return node.id === nodeID;
     });
 
     if (newNode) {

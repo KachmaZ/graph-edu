@@ -3,7 +3,7 @@
     class="graph"
     style="width: 100%; height: 100%"
     :configs="initialCongigs"
-    :eventHandlers="!demoMode ? eventHandlers : () => {}"
+    :eventHandlers="eventHandlers"
     v-bind="{ ...graph }"
   />
 </template>

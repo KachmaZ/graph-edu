@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import courseCheckIconUrl from '@/assets/images/icons/course-check.svg';
-import courseProgressIconUrl from '@/assets/images/icons/course-in-progress.svg';
-import courseLockedIconUrl from '@/assets/images/icons/locked.svg';
+import courseCheckIconUrl from '@/assets/images/icons/course-check.svg?url';
+import courseProgressIconUrl from '@/assets/images/icons/course-in-progress.svg?url';
+import courseLockedIconUrl from '@/assets/images/icons/locked.svg?url';
 import { computed } from 'vue';
 
 interface UIProgressButtonProps {

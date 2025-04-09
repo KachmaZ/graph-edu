@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import passedIconSrc from '@/assets/images/icons/passed.svg';
-import lockedIconSrc from '@/assets/images/icons/locked.svg';
+import passedIconSrc from '@/assets/images/icons/passed.svg?url';
+import lockedIconSrc from '@/assets/images/icons/locked.svg?url';
 
 defineProps<{
   itemNumber: number;
@@ -45,6 +45,12 @@ defineProps<{
 
   &.closed {
     pointer-events: none;
+  }
+
+  &__text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &__icon {

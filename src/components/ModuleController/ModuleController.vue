@@ -4,106 +4,35 @@
       <ModuleNavigation
         :node-title="node.name ?? ''"
         :node-modules="node.modules ?? []"
-        v-model:chosen-component="contentComponent"
-        v-model:prev-next-mode="prevNextMode"
+        v-model="moduleContentConfig"
+        v-model:currentPosition="currentPosition"
       />
     </div>
     <div class="module-controller__content">
-      <component :is="contentComponent" v-bind="{ prevNextMode }">
-        {{ module?.content }}
+      <component
+        :is="moduleContentConfig.componentIs"
+        v-bind="moduleContentConfig.componentProps"
+        :key="currentPosition"
+      >
       </component>
-    </div>
-    <div class="module-controller__controls">
-      <button @click="previousAction" :disabled="isPreviousDisabled">Предыдущий модуль</button>
-      <button @click="nextAction" :disabled="isNextDisabled">Следующий модуль</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, shallowRef } from 'vue';
-import router from '../../router';
+import { ref, shallowRef } from 'vue';
 import ModuleNavigation from './ModuleNavigation.vue';
 import useIsStudent from '../../composables/useIsStudent';
 import ModuleContent from './ModuleContent.vue';
 
-const { isStudent, course, node, module, setModule } = useIsStudent();
+const { node, module } = useIsStudent();
 
-const contentComponent = shallowRef(ModuleContent);
-const prevNextMode = ref(null);
+const currentPosition = ref(1);
 
-const isPreviousDisabled = computed(() => {
-  const currentModuleIndex = node.value.modules.findIndex(
-    (nodeModule) => nodeModule.id === module.value?.id,
-  );
-  const nodeIndex = Object.entries(course.value.nodes).findIndex(
-    ([_, courseNode]) => courseNode.id === node.value.id,
-  );
-  if (nodeIndex === 0 && currentModuleIndex === 0) {
-    return true;
-  }
-  return false;
+const moduleContentConfig = shallowRef({
+  componentIs: ModuleContent,
+  componentProps: { htmlContent: module.value?.content },
 });
-const isNextDisabled = computed(() => {
-  const currentCourseNodes = Object.entries(course.value.nodes);
-  const nodeIndex = currentCourseNodes.findIndex(
-    ([_, courseNode]) => courseNode.id === node.value.id,
-  );
-  if (nodeIndex === currentCourseNodes.length - 1) {
-    return true;
-  }
-  return false;
-});
-
-const previousAction = () => {
-  const moduleIndex = node.value.modules.findIndex(
-    (nodeModule) => nodeModule.id === module.value?.id,
-  );
-
-  if (moduleIndex === 0) {
-    // Если модуль первый - к предыдущему узлу либо заблокировано
-    const nodeIndex = Object.entries(course.value.nodes).findIndex(
-      ([_, courseNode]) => courseNode.id === node.value.id,
-    );
-
-    const previousNodeID = Object.entries(course.value.nodes)[nodeIndex - 1][1].id;
-
-    router.push({
-      name: isStudent ? 'StudentCourseModule' : 'CourseModule',
-      params: {
-        courseId: course.value.id,
-        nodeId: previousNodeID,
-      },
-    });
-  } else {
-    setModule(node.value.modules[moduleIndex - 1].id);
-  }
-};
-
-const nextAction = () => {
-  const moduleIndex = node.value.modules.findIndex(
-    (nodeModule) => nodeModule.id === module.value?.id,
-  );
-
-  if (moduleIndex === node.value.modules.length - 1) {
-    // Если модуль последний - к следующему узлу
-    const nodeIndex = Object.entries(course.value.nodes).findIndex(
-      ([_, courseNode]) => courseNode.id === node.value.id,
-    );
-
-    const nextNodeID = Object.entries(course.value.nodes)[nodeIndex + 1][1].id;
-
-    router.push({
-      name: isStudent ? 'StudentCourseModule' : 'CourseModule',
-      params: {
-        courseId: course.value.id,
-        nodeId: nextNodeID,
-      },
-    });
-  } else {
-    setModule(node.value.modules[moduleIndex + 1].id);
-  }
-};
 </script>
 
 <style scoped lang="scss">

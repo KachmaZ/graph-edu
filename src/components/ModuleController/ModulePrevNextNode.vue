@@ -5,20 +5,22 @@
     </h2>
   </div>
   <div class="prevNext__links">
-    <button
+    <UIButton
+      variant="primary"
       class="prevNext__links--item"
       v-for="actualNode in actualNodes"
       :key="actualNode?.id"
       @click="setNode(actualNode?.id ?? '')"
     >
       {{ actualNode?.name }}
-    </button>
+    </UIButton>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import useIsStudent from '../../composables/useIsStudent';
+import UIButton from '@/components/UIkit/UIButton.vue';
 
 const props = defineProps<{ prevNextMode: 'prev' | 'next' | null }>();
 
@@ -59,9 +61,13 @@ const actualNodes = computed(() => {
 
 <style scoped lang="scss">
 .prevNext {
+  &__title {
+    text-align: center;
+  }
   &__links {
     padding: 20px;
     display: flex;
+    justify-content: center;
     gap: 20px;
 
     &--item {

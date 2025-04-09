@@ -1,4 +1,4 @@
-@use './colors.scss';
+@use './colors.scss' as *;
 
 @mixin setup-fonts {
   body {
@@ -61,7 +61,8 @@
     &:hover {
       background-color: $primary-hover;
     }
-    &:active {
+    &:active,
+    &.active {
       background-color: $primary-pressing;
     }
     &:disabled {
@@ -76,7 +77,8 @@
     &:hover {
       background-color: $secondary-hover;
     }
-    &:active {
+    &:active,
+    &.active {
       background-color: $secondary-pressing;
     }
     &:disabled {
@@ -86,7 +88,7 @@
   }
   @if $scheme == dark {
     background-color: $bg-transparency;
-    color: $text-black;
+    color: $text-light-grey;
 
     &:hover {
       background-color: $bg-transparency-hover;
@@ -96,6 +98,8 @@
     }
     &:disabled {
       color: $text-pressing;
+
+      background-color: $bg-transparency;
     }
   }
   @if $scheme == status {
@@ -124,7 +128,7 @@
       }
     }
     &.status-current {
-      background-color: $primary;
+      background-color: $status-in-progress;
       &:hover {
         background-color: $secondary-hover;
       }
@@ -137,4 +141,3 @@
     }
   }
 }
-// В чём смысл разных зелёных цветов узлов графа?

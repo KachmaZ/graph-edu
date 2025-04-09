@@ -3,7 +3,7 @@
     <h1 class="uikit__title">UI-kit</h1>
     <section class="uikit__section">
       <div class="example">
-        <h3 class="exapmple__title">Primary Button</h3>
+        <h3 class="example__title">Primary Button</h3>
         <UIButton variant="primary">Войти</UIButton>
         <UIButton variant="primary" disabled>Войти</UIButton>
       </div>
@@ -18,6 +18,8 @@
       </div>
       <div class="example">
         <h3 class="example__title">Icon Button</h3>
+        <UIIconButton :icon="ArrowIcon" />
+        <UIIconButton :icon="ArrowIcon" disabled />
       </div>
       <div class="example">
         <h3 class="example__title">Progress Button</h3>
@@ -38,10 +40,12 @@
 </template>
 
 <script setup lang="ts">
+import UIIconButton from '@/components/UIkit/UIIconButton.vue';
 import UIButton from '../components/UIkit/UIButton.vue';
 import UIProgressButton from '../components/UIkit/UIProgressButton.vue';
 import UIRoundButton from '../components/UIkit/UIRoundButton.vue';
 import UISideTab from '../components/UIkit/UISideTab.vue';
+import ArrowIcon from '@/assets/images/icons/arrow-left.svg?component';
 </script>
 
 <style scoped lang="scss">
@@ -60,6 +64,10 @@ import UISideTab from '../components/UIkit/UISideTab.vue';
       flex-direction: column;
       align-items: center;
       gap: 20px;
+
+      &__title {
+        text-align: center;
+      }
     }
   }
 }

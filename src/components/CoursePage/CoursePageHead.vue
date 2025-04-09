@@ -34,7 +34,7 @@ const cssProps = useCourseTheme(props.course, 'big-banner');
   }
 
   &__description {
-    width: 470px;
+    max-width: 70%;
     margin-bottom: 35px;
   }
 

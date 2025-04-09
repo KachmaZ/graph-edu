@@ -30,8 +30,6 @@ const moduleLinkHandler = (nodeId: string, moduleId: string) => {
     params: { courseId: course.value.id, nodeId },
   });
 };
-
-console.log(node.value.id);
 </script>
 
 <style scoped lang="scss">

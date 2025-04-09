@@ -8,7 +8,7 @@
         <h3>{{ course.name }}</h3>
       </div>
       <RouterLink :to="{}" class="continue-link text-main"
-        >Продолжить обучение <img :src="rightArrowIconSrc"
+        >Продолжить обучение <RightArrowIcon
       /></RouterLink>
     </div>
   </div>
@@ -20,7 +20,7 @@ import type { EduCourse } from '../types';
 import useCourseTheme from '../composables/useCourseTheme';
 import router from '../router';
 import useIsStudent from '../composables/useIsStudent';
-import rightArrowIconSrc from '@/assets/images/icons/arrow-right.svg';
+import RightArrowIcon from '@/assets/images/icons/arrow-right.svg?component';
 
 const props = defineProps<{
   course: EduCourse;
