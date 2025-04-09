@@ -59,9 +59,13 @@ const modelValue = defineModel<{
   moduleId?: string;
 }>({ required: true });
 
-const { course, node, module, setModule } = useIsStudent();
+const { node, module, setModule } = useIsStudent();
 
-const navLinks = [
+const navLinks: {
+  componentIs: any;
+  componentProps: any;
+  moduleId?: string;
+}[] = [
   {
     componentIs: ModulePrevNextNode,
     componentProps: { prevNextMode: 'prev' },
@@ -90,7 +94,7 @@ const moduleClickHandler = (moduleID: string, newPosition: number) => {
 
 const previousAction = () => {
   if (currentPosition.value > 1) {
-    setModule(navLinks[currentPosition.value - 1].moduleId);
+    setModule(navLinks[currentPosition.value - 1].moduleId ?? '');
   } else {
     currentPosition.value--;
   }
@@ -98,7 +102,7 @@ const previousAction = () => {
 
 const nextAction = () => {
   if (currentPosition.value < navLinks.length - 2) {
-    setModule(navLinks[currentPosition.value + 1].moduleId);
+    setModule(navLinks[currentPosition.value + 1].moduleId ?? '');
   } else {
     currentPosition.value++;
   }

@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { FunctionalComponent } from 'vue';
 
-const props = defineProps<{
+defineProps<{
   icon: FunctionalComponent;
 }>();
 </script>

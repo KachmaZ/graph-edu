@@ -10,8 +10,8 @@
     </div>
     <div class="module-controller__content">
       <component
-        :is="moduleContentConfig.componentIs"
         v-bind="moduleContentConfig.componentProps"
+        :is="moduleContentConfig.componentIs"
         :key="currentPosition"
       >
       </component>
@@ -31,7 +31,7 @@ const currentPosition = ref(1);
 
 const moduleContentConfig = shallowRef({
   componentIs: ModuleContent,
-  componentProps: { htmlContent: module.value?.content },
+  componentProps: { htmlContent: module.value?.content ?? '' },
 });
 </script>
 
