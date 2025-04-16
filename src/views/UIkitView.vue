@@ -33,7 +33,7 @@
         <UISideTab :item-number="1" :title="'Классная тема'" :status="'passed'" />
         <UISideTab class="current" :item-number="2" :title="'Наша тема'" :status="'available'" />
         <UISideTab :item-number="3" :title="'Норм тема'" :status="'available'" />
-        <UISideTab class="" :item-number="4" :title="'Хуйня тема'" :status="'closed'" />
+        <UISideTab class="" :item-number="4" :title="'Закрытая тема'" :status="'closed'" />
       </div>
     </section>
   </div>
