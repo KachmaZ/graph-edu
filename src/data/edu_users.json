@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "email": "student@example.com",
+    "password": "student",
+    "name": "Иван",
+    "surname": "Иванов",
+    "patronimic": "Иванович",
+    "role": "student",
+    "courses": ["1"]
+  },
+  {
+    "id": "2",
+    "email": "teacher@example.com",
+    "password": "teacher",
+    "name": "Петр",
+    "surname": "Петров",
+    "patronimic": "Петрович",
+    "role": "teacher",
+    "courses": ["1"]
+  }
+]
