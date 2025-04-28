@@ -21,5 +21,9 @@ const modelValue = defineModel();
   outline: none;
   border-radius: 15px;
   @include color-scheme-base(dark);
+
+  @include respond-to(sm) {
+    width: 100%;
+  }
 }
 </style>

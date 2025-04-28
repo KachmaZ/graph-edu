@@ -21,7 +21,13 @@
     </div>
     <div class="app-header--mobile">
       <UIIconButton :icon="MenuIcon" />
-      <UIRoundButton>{{ getFirstLetters }}</UIRoundButton>
+      <div class="" :style="{ display: 'flex', alignItems: 'center', gap: '10px' }">
+        <template v-if="user">
+          <UIIconButton :icon="LogoutIcon" @click="logout" />
+          <UIRoundButton>{{ getFirstLetters }}</UIRoundButton>
+        </template>
+        <UIIconButton v-else="user" :icon="LoginIcon" @click="goToLogin" />
+      </div>
     </div>
   </header>
 </template>
@@ -37,7 +43,10 @@ import logoPath from '@/assets/images/logo.png';
 import UIButton from '../components/UIkit/UIButton.vue';
 import UIRoundButton from '../components/UIkit/UIRoundButton.vue';
 import UIIconButton from '@/components/UIkit/UIIconButton.vue';
+
 import MenuIcon from '@/assets/images/icons/menu.svg?component';
+import LogoutIcon from '@/assets/images/icons/logout.svg?component';
+import LoginIcon from '@/assets/images/icons/login.svg?component';
 
 const userStore = useUserStore();
 const { user, getFirstLetters } = storeToRefs(userStore);

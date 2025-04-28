@@ -1,6 +1,6 @@
 <template>
   <button class="ui-icon-button">
-    <icon />
+    <component :is="icon" />
   </button>
 </template>
 

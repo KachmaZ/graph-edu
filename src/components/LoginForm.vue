@@ -66,5 +66,13 @@ const handleSubmit = () => {
   &__error {
     color: $status-negative;
   }
+
+  @include respond-to(sm) {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    border-radius: 0;
+  }
 }
 </style>

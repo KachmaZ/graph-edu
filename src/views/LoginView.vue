@@ -19,5 +19,13 @@ import LoginForm from '../components/LoginForm.vue';
   left: 50%;
 
   transform: translate(-50%, -50%);
+
+  @include respond-to(sm) {
+    width: 100%;
+    height: 100%;
+    transform: none;
+
+    position: static;
+  }
 }
 </style>

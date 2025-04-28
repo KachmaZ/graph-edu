@@ -24,6 +24,8 @@ class MockProvider {
     if (params.includes('enrol')) {
       return EDU_ENROLS;
     }
+
+    console.log(options);
   }
   async onError(response: any) {
     if (response.json) {
