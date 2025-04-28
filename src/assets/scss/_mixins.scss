@@ -53,6 +53,22 @@
   }
 }
 
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 600px) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+}
+
 @mixin color-scheme-base($scheme) {
   @if $scheme == primary {
     background-color: $primary;
@@ -93,7 +109,8 @@
     &:hover {
       background-color: $bg-transparency-hover;
     }
-    &:active {
+    &:active,
+    &.active {
       background-color: $bg-transparency-active;
     }
     &:disabled {
@@ -108,7 +125,8 @@
       &:hover {
         background-color: $secondary-hover;
       }
-      &:active {
+      &:active,
+      &.active {
         background-color: $primary;
       }
       &:disabled {
@@ -132,7 +150,8 @@
       &:hover {
         background-color: $secondary-hover;
       }
-      &:active {
+      &:active,
+      &.active {
         background-color: $primary;
       }
       &:disabled {

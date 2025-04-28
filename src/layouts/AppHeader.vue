@@ -1,21 +1,27 @@
 <template>
   <header class="app-header">
-    <RouterLink :to="{ name: 'Main' }" class="app-header__logo">
-      <img :src="logoPath" alt="GRAPH-EDU" />
-    </RouterLink>
-    <div class="app-header__nav">
-      <AppNav :routes="headerRoutes" />
+    <div class="app-header--desk">
+      <RouterLink :to="{ name: 'Main' }" class="app-header__logo">
+        <img :src="logoPath" alt="GRAPH-EDU" />
+      </RouterLink>
+      <div class="app-header__nav">
+        <AppNav :routes="headerRoutes" />
+      </div>
+
+      <div class="app-header__user">
+        <template v-if="user">
+          <RouterLink :to="{ name: 'Profile' }" style="text-decoration: none">
+            <UIRoundButton>{{ getFirstLetters }}</UIRoundButton>
+          </RouterLink>
+
+          <UIButton class="user-logout" variant="primary" @click="logout">Выйти</UIButton>
+        </template>
+        <UIButton variant="primary" v-else class="user-login" @click="goToLogin">Войти</UIButton>
+      </div>
     </div>
-
-    <div class="app-header__user">
-      <template v-if="user">
-        <RouterLink :to="{ name: 'Profile' }" style="text-decoration: none">
-          <UIRoundButton>{{ getFirstLetters }}</UIRoundButton>
-        </RouterLink>
-
-        <UIButton class="user-logout" variant="primary" @click="logout">Выйти</UIButton>
-      </template>
-      <button v-else class="user-login" @click="goToLogin">Войти</button>
+    <div class="app-header--mobile">
+      <UIIconButton :icon="MenuIcon" />
+      <UIRoundButton>{{ getFirstLetters }}</UIRoundButton>
     </div>
   </header>
 </template>
@@ -30,6 +36,8 @@ import { ref } from 'vue';
 import logoPath from '@/assets/images/logo.png';
 import UIButton from '../components/UIkit/UIButton.vue';
 import UIRoundButton from '../components/UIkit/UIRoundButton.vue';
+import UIIconButton from '@/components/UIkit/UIIconButton.vue';
+import MenuIcon from '@/assets/images/icons/menu.svg?component';
 
 const userStore = useUserStore();
 const { user, getFirstLetters } = storeToRefs(userStore);
@@ -63,31 +71,50 @@ const goToLogin = () => {
 <style scoped lang="scss">
 .app-header {
   width: 100%;
-  height: $header_height;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-
   background-color: $bg-black;
 
-  &__logo {
-    text-decoration: none;
-    color: white;
-  }
-
-  &__user {
+  &--desk,
+  &--mobile {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+  }
 
-    .user-avatar {
-      width: 40px;
-      height: 40px;
+  &--desk {
+    height: $header_height;
+
+    .app-header {
+      &__logo {
+        text-decoration: none;
+        color: white;
+      }
+
+      &__user {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .user-avatar {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+
+    @include respond-to(sm) {
+      display: none;
+    }
+  }
+
+  &--mobile {
+    display: none;
+    @include respond-to(sm) {
+      height: 56px;
+      display: flex;
     }
   }
 }

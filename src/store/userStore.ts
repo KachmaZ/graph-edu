@@ -12,6 +12,7 @@ export const useUserStore = defineStore('users', () => {
 
   const login = (email: string, password: string) => {
     const loginUser = users.find((user: User) => user.email === email);
+
     if (loginUser?.password === password) {
       localStorage.setItem('graph_edu_email', email);
       localStorage.setItem('graph_edu_password', password);

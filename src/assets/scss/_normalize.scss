@@ -1,5 +1,6 @@
 /* stylelint-disable */
 @use './colors' as *;
+@use './mixins' as *;
 
 * {
   margin: 0;
@@ -246,4 +247,8 @@ textarea {
 header,
 footer {
   padding: 0 60px;
+
+  @include respond-to(sm) {
+    padding: 0 20px;
+  }
 }

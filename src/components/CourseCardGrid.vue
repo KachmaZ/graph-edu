@@ -29,6 +29,10 @@ const { courseList } = useIsStudent();
   gap: 20px;
   grid-template-columns: repeat(4, 1fr);
 
+  @include respond-to(sm) {
+    grid-template-columns: 1fr;
+  }
+
   &__user {
     grid-template-columns: repeat(2, 1fr);
   }

@@ -1,13 +1,22 @@
 <template>
   <div class="course-card" @click="cardClickHandler(course.id)">
-    <img class="course-card__img" :src="imageUrl" alt="" />
-    <div class="">
-      <h3 class="course-card__title">{{ course.name }}</h3>
-      <div class="course-card__description text-small">
-        {{ course.description }}
+    <div class="course-card--desk">
+      <img class="course-card__img" :src="imageUrl" alt="" />
+      <div>
+        <h3 class="course-card__title">{{ course.name }}</h3>
+        <div class="course-card__description text-small">
+          {{ course.description }}
+        </div>
+      </div>
+      <div class="course-card__time text-small">Срок обучения: 3 месяца</div>
+    </div>
+    <div class="course-card--mobile">
+      <img class="course-card__img" :src="imageUrl" alt="" />
+      <div>
+        <h4>{{ course.name }}</h4>
+        <div class="course-card__time text-small">Срок обучения: 3 месяца</div>
       </div>
     </div>
-    <div class="course-card__time text-small">Срок обучения: 3 месяца</div>
   </div>
 </template>
 
@@ -40,17 +49,45 @@ const cssProps = useCourseTheme(props.course, 'card');
 .course-card {
   width: 100%;
   height: 520px;
-  padding: 45px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 35px;
   border-radius: 25px;
+
+  &--desk {
+    padding: 45px;
+    gap: 35px;
+    @include respond-to(sm) {
+      display: none;
+    }
+  }
+
+  &--mobile {
+    padding: 20px;
+    gap: 20px;
+    display: none;
+
+    @include respond-to(sm) {
+      display: flex;
+    }
+
+    .course-card {
+      &__img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
 
   color: $text-black;
   background-color: v-bind('cssProps.backgroundColor');
   background-image: v-bind('cssProps.backgroundImage');
+
+  @include respond-to(sm) {
+    height: auto;
+    flex-direction: row;
+  }
 
   &__title {
     text-align: left;
@@ -71,6 +108,10 @@ const cssProps = useCourseTheme(props.course, 'card');
     text-overflow: ellipsis;
     line-clamp: 4;
     text-align: left;
+
+    @include respond-to(sm) {
+      display: none;
+    }
   }
   &__time {
     width: 100%;
